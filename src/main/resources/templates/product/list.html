@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- sử dụng layout có dinamic động-> thay toàn bộ nội dung của list này bởi 1 frangment có tên dinamic trong layout
+     -> đưa thẻ main vào vùng động trong layout đó -->
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<body>
+<main class="mt-2 bg-warning row">
+    <!-- thiết kế nội dung cho product list -->
+    <div th:each="p: ${items}" class="col-sm-4 ">   
+        <div class="card cart-item mb-2">
+            <div class="card-header text-center">
+                    <div class="card-title" th:utext="${p.name}"></div>
+            </div>
+            <div class="card-body text-center">
+                <a th:href="@{|/product/detail/${p.id}|}">
+                    <img th:src="@{|/assets/images/${p.image}|}">
+                </a>
+            </div>
+            <div class="card-footer" style="text-align: right">
+                <b>$[[${p.price}]]</b>
+                <button class="btn btn-success" th:attr="ng-click=@{|cart.add(${p.id})|}">
+                    +
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+
+</html>

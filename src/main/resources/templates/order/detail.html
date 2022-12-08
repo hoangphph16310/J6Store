@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<!-- sử dụng layout có dinamic động-> thay toàn bộ nội dung của list này bởi 1 frangment có tên dinamic trong layout
+     -> đưa thẻ main vào vùng động trong layout đó -->
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<body>
+    <main>
+        <!-- thiết kế nội dung cho product list -->
+        <h1>Order Detail</h1>
+    </main>
+</body>
+
+</html>

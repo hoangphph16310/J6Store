@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- sử dụng layout có dinamic động-> thay toàn bộ nội dung của list này bởi 1 frangment có tên dinamic trong layout
+     -> đưa thẻ main vào vùng động trong layout đó -->
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+
+<body>
+    <main>
+        <!-- thiết kế nội dung cho product list -->
+        <div class="card">
+            <div class="card-header bg-primary text-center">
+                SHOPPING CART
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in cart.items">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.price | number : 2}}</td>
+                            <td><input type="number" ng-change="cart.saveToLocalStorage()" ng-model="item.qty" min="1"></td>
+                            <td>{{item.qty* item.price | number : 2}}</td>
+                            <td>
+                                <button ng-click="cart.remove(item.id)" class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <button ng-click="cart.clear()" class="btn btn-danger">Clear</button>
+                <a th:href="@{/oder/checkout}" class="btn btn-primary">Checkout</a>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>
