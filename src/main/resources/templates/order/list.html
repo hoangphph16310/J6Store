@@ -4,10 +4,37 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
 
 <body>
-    <main>
-        <!-- thiết kế nội dung cho product list -->
-        <h1>Order List</h1>
-    </main>
+<main>
+    <div class="card">
+        <div class="card-header bg-primary text-center">
+            YOUR ORDERS PURCHASED
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Oder No.</th>
+                    <th>Oder Date</th>
+                    <th>Shipping Address</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="order,state:${orders}">
+                    <td>[[${state.index}]]</td>
+                    <td>[[${order.id}]]</td>
+                    <td>[[${order.createDate}]]</td>
+                    <td>[[${order.address}]]</td>
+                    <td>
+                        <a th:href="@{/order/detail/${order.id}}" class="btn btn-default"></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
 </body>
 
 </html>
