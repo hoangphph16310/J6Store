@@ -24,7 +24,7 @@ public class Order {
     private Date createDate = new Date();
     @ManyToOne
     @JoinColumn(name = "Username")
-    Account account;
+     Account account;
     @JsonIgnore
     @OneToMany(mappedBy = "order")
     List<OrderDetail> orderDetails;

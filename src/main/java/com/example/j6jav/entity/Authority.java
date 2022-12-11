@@ -14,13 +14,13 @@ import javax.persistence.*;
 @Table(name = "Authorities")
 public class Authority {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     @JoinColumn(name = "Username")
     private Account account;
     @ManyToOne
-    @JoinColumn(name = "RoleId")
+    @JoinColumn(name = "Roleid")
     private Role role;
 
 }

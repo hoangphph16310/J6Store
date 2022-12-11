@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
            try {
                // Tạo user thông qua username
                Account user = accountService.findById(username);
+               System.out.println(user);
                //Lấy password và mã hóa
                String password = passwordEncoder.encode(user.getPassWord());
                //Lấy vai trò của người dùng đưa vào mảng đẻ tạo userDetail

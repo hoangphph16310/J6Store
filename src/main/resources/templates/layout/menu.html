@@ -1,38 +1,30 @@
-<div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Product</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/}">Trang chủ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Giới thiệu</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Quản trị
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Tài Khoản</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Trạng thái</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+<div class="container">
+    <nav class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a th:href="@{/product/list}" class="nav-link px-2 text-white">Home</a></li>
+                    <th:block th:if="${#request.remoteUser}">
+                        <li>
+                            <a th:href="@{/security/logoff}" class="nav-link px-2 text-white">Sign Out</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/order/list}" class="nav-link px-2 text-white">Your Orders</a>
+                        </li>
+                        <li th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}">
+                            <a th:href="@{/admin/home/index}" class="nav-link px-2 text-white">Administration</a>
+                        </li>
+                    </th:block>
+                    <th:block th:unless="${#request.remoteUser}">
+                        <li><a th:href="@{/security/login/form}" class="nav-link px-2 text-white">Sign In</a></li>
+                    </th:block>
+
+                </ul>
+                <ul th:if="${#request.remoteUser}" style="list-style: none">
+                    <li><a href="#" class="nav-link px-2 text-white">Xin chào [[${#request.remoteUser}]]</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </div>
