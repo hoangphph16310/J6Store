@@ -13,7 +13,7 @@
                             <a th:href="@{/order/list}" class="nav-link px-2 text-white">Your Orders</a>
                         </li>
                         <li th:if="${#request.isUserInRole('DIRE') or #request.isUserInRole('STAF')}">
-                            <a th:href="@{/admin/home/index}" class="nav-link px-2 text-white">Administration</a>
+                            <a th:href="@{/assets/admin/index.html}" class="nav-link px-2 text-white">Administration</a>
                         </li>
                     </th:block>
                     <th:block th:unless="${#request.remoteUser}">

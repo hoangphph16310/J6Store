@@ -26,4 +26,19 @@ public class ProductServiceImp implements ProductService{
     public List<Product> findByCategoryId(String cid) {
         return productRepo.findByCategoryId(cid);
     }
+
+    @Override
+    public Product create(Product product) {
+        return productRepo.save(product);
+    }
+
+    @Override
+    public Product update(Product product) {
+        return productRepo.save(product);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        productRepo.deleteById(id);
+    }
 }
